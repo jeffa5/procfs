@@ -3,6 +3,7 @@ use std::io::{BufRead, BufReader};
 
 /// The type of a file lock
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum LockType {
     /// A BSD file lock created using `flock`
     FLock,
@@ -41,6 +42,7 @@ impl From<&str> for LockType {
 
 /// The mode of a lock (advisory or mandatory)
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum LockMode {
     Advisory,
     Mandatory,
@@ -71,6 +73,7 @@ impl From<&str> for LockMode {
 
 /// The kind of a lock (read or write)
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum LockKind {
     /// A read lock (or BSD shared lock)
     Read,
@@ -109,6 +112,7 @@ impl From<&str> for LockKind {
 ///
 /// For an example, see the [lslocks.rs](https://github.com/eminence/procfs/tree/master/examples)
 /// example in the source repo.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Lock {
     /// The type of lock
     pub lock_type: LockType,

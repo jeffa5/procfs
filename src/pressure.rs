@@ -12,6 +12,7 @@ use std::collections::HashMap;
 ///
 /// See also: https://www.kernel.org/doc/Documentation/accounting/psi.txt
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct PressureRecord {
     /// 10 second window
     ///
@@ -34,6 +35,7 @@ pub struct PressureRecord {
 
 /// CPU pressure information
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct CpuPressure {
     pub some: PressureRecord,
 }
@@ -58,6 +60,7 @@ impl CpuPressure {
 
 /// Memory pressure information
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MemoryPressure {
     /// This record indicates the share of time in which at least some tasks are stalled
     pub some: PressureRecord,
@@ -77,6 +80,7 @@ impl MemoryPressure {
 
 /// IO pressure information
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct IoPressure {
     /// This record indicates the share of time in which at least some tasks are stalled
     pub some: PressureRecord,

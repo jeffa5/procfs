@@ -25,6 +25,7 @@ use super::{convert_to_kibibytes, FileWrapper, ProcResult};
 ///
 /// New fields to this struct may be added at any time (even without a major or minor semver bump).
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[allow(non_snake_case)]
 pub struct Meminfo {
     // this private field prevents clients from directly constructing this object.
